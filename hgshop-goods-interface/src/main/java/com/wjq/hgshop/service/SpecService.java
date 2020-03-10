@@ -1,5 +1,7 @@
 package com.wjq.hgshop.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.wjq.hgshop.pojo.Spec;
 
@@ -32,6 +34,8 @@ public interface SpecService {
 	 * @return
 	 */
 	int deleteBatch(int[] id);
+
+	List<Spec> listAll();
 	
 	
 	

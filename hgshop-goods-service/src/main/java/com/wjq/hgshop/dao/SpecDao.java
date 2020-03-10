@@ -7,12 +7,12 @@ import com.wjq.hgshop.pojo.SpecOption;
 
 /**
  * 
- * @author wjq
+ * @author zhuzg
  *
  */
 public interface SpecDao {
 
-	List<Spec> list(String name);
+	List<Spec> list( String name);
 
 	int addSpec(Spec spec);
 
@@ -29,5 +29,7 @@ public interface SpecDao {
 	int deleteSpecOtionsBatch(int[] ids);
 
 	int deleteSpecBatch(int[] ids);
+
+	List<Spec> listAll();
 
 }

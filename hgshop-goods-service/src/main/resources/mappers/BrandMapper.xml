@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjq.hgshop.dao.BrandDao">
+   	
+   	<select id="list" resultType="Brand">
+   		select id,name,first_char firstChar,deleted_flag deletedFlag from hg_brand where deleted_flag=0
+   		<if test="name!=null and name!=''">
+   		and first_char like concat('%',#{name},'%')
+   		</if>
+   	</select>
+   	<insert id="add">
+   	insert into hg_brand value(null,#{name},#{firstChar},0)
+   	</insert>
+   	<select id="doUpdate" resultType="Brand">
+   	select id,name,first_char firstChar,deleted_flag deletedFlag from hg_brand where id=#{id}
+   	</select>
+   	<update id="update">
+   	update hg_brand set name=#{name},first_char=#{firstChar} where id=#{id}
+   	</update>
+   	
+   	<update id="delBrand">
+   	update hg_brand set deleted_flag=1 where id in(${ids})
+   	</update>
+   	<select id="findById" resultType="Brand">
+		select id,name,first_char firstChar from hg_brand 
+		  where id=#{value}
+	</select>
+</mapper>

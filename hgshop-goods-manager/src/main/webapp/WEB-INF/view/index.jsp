@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><!DOCTYPE html>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -24,6 +25,7 @@
 <link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon.ico">
 <script type="text/javascript" src="/resource/jquery/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resource/bootstrap4/js/bootstrap.js"></script>
+ 
 
 <meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
@@ -50,7 +52,7 @@
     
   <style type="text/css">/* Chart.js */
 	@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
-  <body>
+  <body style="background:url('/img/4.jpg')">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
@@ -60,10 +62,9 @@
     </li>
   </ul>
 </nav>
-
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="background:url('/img/2.jpg')">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item" >
@@ -72,14 +73,15 @@
               		品牌管理 <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item"  >
+          
+          <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="/spec/list">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
               		规格管理
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" data-toggle="/cat/list">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
               	  商品类别
             </a>
@@ -91,13 +93,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" data-toggle="/goods/list">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
               	商品管理
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" data-toggle="/goods/skulist">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
                sku管理
             </a>

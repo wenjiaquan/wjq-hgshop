@@ -44,7 +44,7 @@
     <!-- Custom styles for this template -->
     <link href="/resource/css/signin.css" rel="stylesheet">
   </head>
-  <body class="text-center">
+  <body class="text-center" style="background:url('/img/2.jpg')">
     <form class="form-signin" action="/login" method="post">
   <img class="mb-4" src="login_files/bootstrap-solid.svg" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">登录界面</h1>

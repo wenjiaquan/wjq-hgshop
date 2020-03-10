@@ -23,7 +23,11 @@
    		</where>
    		ORDER BY id
    	</select>
-
+	
+	<select id="listAll" resultType="Spec">
+   		select id, spec_name as specName from hg_spec ORDER BY spec_name
+   	</select>
+	
 	<!-- int addSpec(Spec spec); -->
 	<insert id="addSpec" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO hg_spec(spec_name) values(#{specName})
@@ -37,14 +41,42 @@
 	
 
 	<!-- int updateSpec(Spec spec); -->
+	<update id="updateSpec">
+		update hg_spec set spec_name=#{specName}
+		where id=#{id}
+	</update>
 
 	<!-- int deleteSpecOtions(int id); -->
+	<delete id="deleteSpecOtions">
+		delete from hg_spec_option WHERE spec_id = #{value}
+	</delete>
 
 	<!-- int deleteSpec(int id); -->
+	<delete id="deleteSpec">
+		delete from hg_spec WHERE id = #{value}
+	</delete>
 
 	<!-- Spec get(int id); -->
+	<select id="get"  resultMap="specMaper">
+   		select * from hg_spec  WHERE id=#{value}
+	</select>
 
 <!-- 	int deleteSpecOtionsBatch(int[] ids); -->
+    <delete id="deleteSpecOtionsBatch">
+    	delete from hg_spec_option WHERE spec_id in
+    	<foreach collection="array" open="(" close=")" separator="," item="specid">
+    		#{specid}
+    	</foreach>
+    </delete>
+    
+    <delete id="deleteSpecBatch">
+		delete from hg_spec WHERE id  in
+    	<foreach collection="array" open="(" close=")" separator="," item="specid">
+    		#{specid}
+    	</foreach>
+	</delete>
+    
+    
 
 	<!-- int deleteSpecBatch(int[] ids); -->
    	
