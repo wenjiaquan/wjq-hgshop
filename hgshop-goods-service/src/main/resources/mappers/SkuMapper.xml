@@ -40,6 +40,10 @@
  		where sku.sku_id=#{value}
 	</select>
 	
+	<select id="listBySpu" resultMap="skuMapper">
+		SELECT *, id as detailId FROM hg_sku WHERE spu_id=${value} ORDER BY id DESC
+	</select>
+	
 	<insert id="addSku" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		insert into hg_sku(spu_id,title,sell_point,price,create_time,update_time,cost_price,cart_thumbnail) 
 		values(#{spuId},#{title},#{sellPoint},#{price},#{createTime},#{updateTime},#{costPrice},#{cartThumbnail})

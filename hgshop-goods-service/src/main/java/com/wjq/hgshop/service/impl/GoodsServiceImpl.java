@@ -104,7 +104,7 @@ public class GoodsServiceImpl  implements GoodsService{
 		@Override
 		public PageInfo<Spu> listSpu(int page, SpuVo vo) {
 			// TODO Auto-generated method stub
-			PageHelper.startPage(page, 5);
+			PageHelper.startPage(page, 8);
 			
 			return new PageInfo<Spu>(spuDao.list(vo));
 		}
@@ -196,5 +196,11 @@ public class GoodsServiceImpl  implements GoodsService{
 		public Spu getSpu(int id) {
 			// TODO Auto-generated method stub
 			return spuDao.findById(id);
+		}
+
+		@Override
+		public List<Sku> listSkuBySpu(int spuId) {
+			// TODO Auto-generated method stub
+			return skuDao.listBySpu(spuId);
 		}
 }

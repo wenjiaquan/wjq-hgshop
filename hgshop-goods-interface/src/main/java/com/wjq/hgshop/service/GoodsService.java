@@ -64,4 +64,5 @@ public interface GoodsService {
 		int deleteSkuBatch(int[] id);
 		
 		Spu getSpu(int id);
+		List<Sku> listSkuBySpu(int spuId);
 }

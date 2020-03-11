@@ -25,6 +25,8 @@ public interface SkuDao {
 	int addSkuSpec(@Param("skuId") int skuId,@Param("so") SpecOption so);
 	
 	List<SpecOption>findSpecsBySkuid(int id);
+
+	List<Sku> listBySpu(int spuId);
 	
 	
 }
