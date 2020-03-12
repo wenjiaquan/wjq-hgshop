@@ -18,7 +18,7 @@ import com.wjq.hgshop.service.GoodsService;
 /**
  * 首页
  * @author wjq
- *
+ * 
  */
 @Controller
 public class IndexController {
@@ -39,8 +39,6 @@ public class IndexController {
 			@RequestParam(defaultValue="0") int catId) {
 		// 获取商品的数据
 		PageInfo<Spu> listSpu = goodsService.listSpu(page, new SpuVo());
-		listSpu.setPrePage(page-1);
-		listSpu.setNextPage(page+1);
 		request.setAttribute("pageInfo", listSpu);
 		return "index";
 	}

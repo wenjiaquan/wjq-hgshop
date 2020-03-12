@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html>
+    pageEncoding="UTF-8"%><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -10,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>豪哥商城系统</title>
+    <title>个人中心</title>
 
     <!-- Bootstrap core CSS -->
 	<link href="/resource/bootstrap4/css/bootstrap.css" rel="stylesheet" >
@@ -58,71 +56,47 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      
+      <a class="nav-link" href="#">Sign out</a>
     </li>
   </ul>
 </nav>
 
-<div class="container" style="margin-top:80px">
-	<div class="row">
-		<div class="col-md-6">
-			<img  width="400" height="400" alt="" src="/pic/${spu.smallPic}">
-		</div>
-		<div>
-			<div>${spu.goodsName} </div>
-			<div style="width: 350;height: 400">
-				<font color="red" >${spu.caption}</font> 
-			
-			</div>
-			<!-- 以下显示sku -->
-			<div>
-				<c:forEach items="${skus}" var="sku">
-					
-					<div style="border:1px solid rgb(255,0,0); margin:4px" onclick="selSku(${sku.id},${sku.price})" >
-						<c:forEach items="${sku.specs}" var="spec">
-							&nbsp;${spec.specName}:${spec.optionName} 
-						</c:forEach>
-					</div>
-				</c:forEach>
-			</div>
-				<!-- 显示sku 的买点等等 -->
-			<div id="skuDetail">
-				
-			</div>
-			<!-- 加入购物车 -->
-			<div>
-				购买数量：<input type="number" id="buyNum">
-				<button type="button" class="btn btn-danger btn-lg" onclick="addCart()">加入购物车</button>
-			</div>
-		</div>
-	</div>
-</div>
-<script>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item" >
+            <a class="nav-link active" href="#" data-toggle="/user/cartlist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              		购物车 <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item"  >
+            <a class="nav-link" href="#" data-toggle="/user/orderlist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              		完成订单
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
 
-	var buySkuId=0;
-
-	function addCart(){
+    	<main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 		
-		$.post("/user/addCart",
-				{skuId:buySkuId,
-				 buyNum:$("#buyNum").val()
-				 },
-				function(msg){
-					if(msg=="success"){
-						alert("购买成功");
-					}else{
-						alert(msg)
-					}
-		});
-	}
+    </main>
+  </div>
+</div>
 
-	
-	function selSku(id,price){
-		$("#skuDetail").html("价格：" + price);
-		buySkuId=id;
-	}
-	
+<script type="text/javascript">
+	$(".nav-link").click(function(){
+		//$(this).attr('data-toggle')
+		var recUrl = $(this).attr('data-toggle');
+		console.log("准备进入 "+ recUrl)
+		$("#main").load(recUrl);
+		
+	})	
 </script>
 
-</body>
-</html>
+</body></html>
