@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 
- * @author zhuzg
+ * @author wjq
  * 分类
  * 
  */

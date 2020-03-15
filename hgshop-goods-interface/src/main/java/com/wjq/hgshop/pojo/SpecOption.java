@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 规格选项实体 
- * @author zhuzg
+ * @author wjq
  *
  */
 public class SpecOption implements Serializable {

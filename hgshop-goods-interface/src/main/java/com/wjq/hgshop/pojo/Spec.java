@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 
- * @author zhuzg
+ * @author wjq
  *  规格
  */
 public class Spec implements Serializable {

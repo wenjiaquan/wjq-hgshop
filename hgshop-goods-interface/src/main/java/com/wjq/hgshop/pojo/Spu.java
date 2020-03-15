@@ -13,7 +13,6 @@ public class Spu implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -3233108997229886312L;
-	
 	private Integer	id; 
 	private String	goodsName;
 	private String	isMarketable; // 是否上线

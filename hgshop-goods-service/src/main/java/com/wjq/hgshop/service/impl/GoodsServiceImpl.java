@@ -1,13 +1,12 @@
 package com.wjq.hgshop.service.impl;
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -20,8 +19,10 @@ import com.wjq.hgshop.pojo.Category;
 import com.wjq.hgshop.pojo.Sku;
 import com.wjq.hgshop.pojo.SpecOption;
 import com.wjq.hgshop.pojo.Spu;
+import com.wjq.hgshop.pojo.SpuEsVo;
 import com.wjq.hgshop.pojo.SpuVo;
 import com.wjq.hgshop.service.GoodsService;
+import com.wjq.hgshop.utils.ElSearchUtil;
 
 /**
  * 
@@ -40,6 +41,11 @@ public class GoodsServiceImpl  implements GoodsService{
 	@Autowired
 	BrandDao brandDao;
 	
+	@Autowired
+	private ElSearchUtil<SpuEsVo> elSearchUtil;
+	
+	@Autowired
+	private KafkaTemplate<String,String> kafkaTemplate;
 	
 	@Override
 	public int addBrand(Brand brand) {
@@ -112,7 +118,13 @@ public class GoodsServiceImpl  implements GoodsService{
 		@Override
 		public int addSpu(Spu spu) {
 			// TODO Auto-generated method stub
-			return spuDao.add(spu);
+			int rs=spuDao.add(spu);
+			Spu newSpu= spuDao.findById(spu.getId());
+			SpuEsVo spuEsVo = new SpuEsVo(newSpu);
+			spuEsVo.setSmallPic(newSpu.getSmallPic());
+			elSearchUtil.saveObject(spu.getId().toString(), spuEsVo);
+			kafkaTemplate.send("MyAddSpu","addspu",spu.getId().toString());
+			return rs;
 		}
 
 		@Override

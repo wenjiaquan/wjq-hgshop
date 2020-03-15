@@ -41,7 +41,7 @@
 	
 
 	<dependencyManagement>
-
+		
 		<dependencies>
 			<!-- 引入dubbo的依赖配置 -->
 			<dependency>
@@ -95,7 +95,8 @@
 				<artifactId>spring-test</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-
+			
+			
 			<!-- mybatis核心包 -->
 			<dependency>
 				<groupId>org.mybatis</groupId>
@@ -197,7 +198,13 @@
 				<artifactId>pagehelper</artifactId>
 				<version>${pagehelper-version}</version>
 			</dependency>
+			<dependency>
 			
+		<groupId>com.wenjiaquan.common.utils</groupId>
+  		<artifactId>common-utils</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+		
+			</dependency>
 			<dependency>
 				<groupId>org.apache.lucene</groupId>
 				<artifactId>lucene-core</artifactId>

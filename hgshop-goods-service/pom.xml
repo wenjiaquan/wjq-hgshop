@@ -35,6 +35,14 @@
 			<artifactId>dubbo-dependencies-zookeeper</artifactId>
 			<type>pom</type>
 		</dependency>
+		
+		<dependency>
+			
+		<groupId>com.wenjiaquan.common.utils</groupId>
+  		<artifactId>common-utils</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+		
+			</dependency>
 		<!-- spring-webmvc依赖 -->
 		<dependency>
 			<groupId>org.springframework</groupId>

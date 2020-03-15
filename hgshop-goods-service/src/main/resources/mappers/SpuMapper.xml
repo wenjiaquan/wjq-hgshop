@@ -25,7 +25,7 @@
 	</resultMap>
 
 	<!-- int add(Spu spu); -->
-	<insert id="add">
+	<insert id="add" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		insert into hg_spu(goods_name,is_marketable,brand_id,caption,category_id,small_pic)
 		values(#{goodsName},#{isMarketable},#{brandId},#{caption},#{categoryId},#{smallPic})
 	</insert>

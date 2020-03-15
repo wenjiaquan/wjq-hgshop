@@ -18,9 +18,8 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
 	<context:component-scan
-		base-package="com.wjq.hgshop.config" />
+		base-package="com.wjq.hgshop.config,com.wjq.hgshop.utils" />
 	
 	<!--配置事务 transaction-manager:表示关联的事务管理器是谁 -->
 	<tx:advice transaction-manager="transactionManager"
@@ -63,4 +62,5 @@
 	<!-- 注解扫描配置 指定了扫描的包 -->
 	<dubbo:annotation
 		package="com.wjq.hgshop.service.impl" />
+		
 </beans>
